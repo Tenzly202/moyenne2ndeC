@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculateur de Moyenne pour 2nde C</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Calculateur de Moyenne pour 2nde C</h1>
+
+    <form method="POST" class="card">
+        {% for mat, coeff in coeffs.items() %}
+            <div class="input-group">
+                <label>{{ mat }} <span class="coeff">(coeff {{ coeff }})</span></label>
+                <input type="number" name="{{ mat }}" step="0.01" min="0" max="20" required>
+            </div>
+        {% endfor %}
+        <button type="submit">Calculer</button>
+    </form>
+
+    {% if moyenne is not none %}
+        <div class="result fade-in">
+            <h2>Moyenne : {{ "%.2f"|format(moyenne) }}/20</h2>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
